@@ -1,0 +1,100 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction,flexipage:availableForAllPageTypes" controller="AppointmentSchedulerController">
+	
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+	<aura:attribute name="today" type="Date" default=""/>
+    <aura:attribute name="recordId" type="String" access="public"/>
+    <aura:attribute name="appointmentList" type="Appointment__c[]" access="public"/>
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData"/>
+    
+    <force:recordData aura:id="record"
+    	layoutType="FULL"
+    	recordId="{!v.recordId}"
+    	targetError="{!v.recordError}"
+    	targetRecord="{!v.record}"
+    	targetFields ="{!v.simpleRecord}"
+    	mode="VIEW"/>
+    
+    <ui:inputDate aura:id="appointmentDate" label="Appointment Date" class="field" value="{!v.today}" displayDatePicker="true"/>
+    <br></br>
+    <ui:inputSelect label="Appointment Time" class="single" aura:id="appointmentTime">
+    	<ui:inputSelectOption text="8:00 AM"/>
+        <ui:inputSelectOption text="8:30 AM"/>
+    	<ui:inputSelectOption text="9:00 AM"/>
+        <ui:inputSelectOption text="9:30 AM"/>
+        <ui:inputSelectOption text="10:00 AM"/>
+        <ui:inputSelectOption text="10:30 AM"/>
+        <ui:inputSelectOption text="11:00 AM"/>
+        <ui:inputSelectOption text="11:30 AM"/>
+        <ui:inputSelectOption text="12:00 PM"/>
+        <ui:inputSelectOption text="12:30 PM"/>
+        <ui:inputSelectOption text="1:00 PM"/>
+        <ui:inputSelectOption text="1:30 PM"/>
+        <ui:inputSelectOption text="2:00 PM"/>
+        <ui:inputSelectOption text="2:30 PM"/>
+        <ui:inputSelectOption text="3:00 PM"/>
+        <ui:inputSelectOption text="3:30 PM"/>
+        <ui:inputSelectOption text="4:00 PM"/>
+        <ui:inputSelectOption text="4:30 PM"/>
+    </ui:inputSelect>
+    <br></br>
+    <br></br>
+    <div>
+    	<button class="slds-button slds-button_neutral" onclick="{!c.newAppointment}">Submit</button>
+    </div>
+    
+    <br></br>
+    <div class="slds-page-header">
+  		<div class="slds-page-header__row">
+    		<div class="slds-page-header__col-title">
+      			<div class="slds-media">
+        			<div class="slds-media__figure">
+          				<lightning:icon iconName="action:log_event" size="x-small"/>
+        			</div>
+        			<div class="slds-media__body">
+          				<div class="slds-page-header__name">
+            				<div class="slds-page-header__name-title">
+              					<h1>
+                					<span class="slds-page-header__title slds-truncate" title="Your Appointments">Your Appointments</span>
+              					</h1>
+            				</div>
+          				</div>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
+ 	</div>
+	
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+  		<thead>
+    		<tr class="slds-line-height_reset">
+      			<th class="slds-text-title_caps" scope="col">
+        			<div class="slds-truncate" title="Appointment Date">Appointment Date</div>
+      			</th>
+      			<th class="slds-text-title_caps" scope="col">
+        			<div class="slds-truncate" title="Appointment Time">Appointment Time</div>
+      			</th>
+      			<th class="slds-text-title_caps" scope="col">
+        			<div class="slds-truncate" title="Season Ticket Holder">Season Ticket Holder</div>
+      			</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+            <aura:iteration items="{!v.appointmentList}" var="appointment">
+                <tr class="slds-hint-parent">
+      				<th data-label="Appointment Date" scope="row">
+        				<div class="slds-truncate" title="{!appointment.Appointment_Date__c}">{!appointment.Appointment_Date__c}</div>
+      				</th>
+      				<td data-label="Appointment Time">
+        				<div class="slds-truncate" title="{!appointment.Appointment_Time__c}">{!appointment.Appointment_Time__c}</div>
+      				</td>
+      				<td data-label="Season Ticket Holder">
+        				<div class="slds-truncate" title="{!appointment.Season_Ticket_Holder__r.Name}">{!appointment.Season_Ticket_Holder__r.Name}</div>
+      				</td>
+    			</tr>
+  			</aura:iteration>   		
+		</tbody>
+	</table>
+    
+</aura:component>

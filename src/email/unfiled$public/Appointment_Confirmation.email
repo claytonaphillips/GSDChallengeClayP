@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hello {!Appointment__c.Season_Ticket_Holder_Name__c},<div><br></div><div>Your appointment with&nbsp;{!Appointment__c.Appointment_With_Name__c} is scheduled for&nbsp;{!Appointment__c.Appointment_Date__c} at&nbsp;{!Appointment__c.Appointment_Time__c}. We look forward to seeing you!</div><div><br></div><div>Best,</div><div>The New York Jedi Masters</div>]]></td>
+</tr>
+</table>
