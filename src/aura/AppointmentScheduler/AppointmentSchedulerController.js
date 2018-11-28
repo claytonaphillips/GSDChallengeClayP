@@ -7,6 +7,5 @@
     
     newAppointment : function(component, event, helper){
     	helper.newAppointment(component, event, helper); 
-        console.log('Email: ' + component.get("v.simpleRecord.Email"));
     }
 })
