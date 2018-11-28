@@ -4,17 +4,6 @@
 	<aura:attribute name="today" type="Date" default=""/>
     <aura:attribute name="recordId" type="String" access="public"/>
     <aura:attribute name="appointmentList" type="Appointment__c[]" access="public"/>
-    <aura:attribute name="record" type="Object"/>
-    <aura:attribute name="simpleRecord" type="Object"/>
-    <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData"/>
-    
-    <force:recordData aura:id="record"
-    	layoutType="FULL"
-    	recordId="{!v.recordId}"
-    	targetError="{!v.recordError}"
-    	targetRecord="{!v.record}"
-    	targetFields ="{!v.simpleRecord}"
-    	mode="VIEW"/>
     
     <ui:inputDate aura:id="appointmentDate" label="Appointment Date" class="field" value="{!v.today}" displayDatePicker="true"/>
     <br></br>
